@@ -1,8 +1,15 @@
 var inquirer = require('inquirer');
+var Players = require ('../models/Player');
+var Game = require('../models/Game');
 
 console.log('Allons y !!');
 
 var nbPlayers = null;
+var TabPlayers = [];
+var Mode = null;
+
+
+
 
 function checkPlayersInStart (nombre) {
   if(nombre > 1 && nombre < 5) {
@@ -24,6 +31,16 @@ var questionJoueurs = [
 
 var questionNomJoueurs = []
 
+var choiceMode = [
+  {
+    type: 'list',
+    name: 'modeGame',
+    message: 'Choisisez le mode de jeux',
+    choices: ['Tour du monde', '301', 'Cricket']
+
+  }
+]
+
 inquirer.prompt(questionJoueurs).then(answers => {
   nbPlayers = answers.nbPlayers;
   for (var i = 0; i < nbPlayers; i++) {
@@ -34,10 +51,21 @@ inquirer.prompt(questionJoueurs).then(answers => {
     })
   }
   inquirer.prompt(questionNomJoueurs).then(answers => {
-    console.log(answers)
     for (var namePlayers in answers) {
-      // Créer des instances de la class Players
-      const player = new Players(name);
-    }
+      let players = new Players(answers[namePlayers]);
+      console.log(players)
+      TabPlayers.push(answers[namePlayers]);
+  }
+    inquirer.prompt(choiceMode).then(answers => {
+      Mode = answers.modeGame
+      if(Mode === 'Tour du monde'){
+        console.log(`Vous avez choisi le ${Mode}`)
+      } else if(Mode === "301"){
+        console.log(`Vous avez choisi le ${Mode}`)
+      } else {
+        console.log(`Vous avez choisi le ${Mode}`)
+      }
+      Players.randPlayers(TabPlayers);
+    })
   })
 });

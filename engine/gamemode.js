@@ -1,8 +1,6 @@
-class Gamemode {
+class GameMode {
     constructor(players) {
-        this.players = players;
-        currentPlayer.Index: RandomSource()
-        if(status = false)
-            console.log ("La partie est terminée !")
+      this.players = players;
+      this.status = status;
     }
-}
+  }
