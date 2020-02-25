@@ -1,5 +1,5 @@
 const db = require('sqlite')
-const basse = require('express').Router()
+const base = require('express').Router()
 
 db.open('api.db').then(() => {
     Promise.all([
@@ -14,4 +14,4 @@ db.open('api.db').then(() => {
     })
 })
 
-module.exports = basse
+module.exports = base
