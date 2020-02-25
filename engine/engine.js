@@ -1,5 +1,5 @@
 // var inquirer = require('inquirer');
-// var Players = require ('../models/Player');
+var Players = require ('../models/Player');
 
 
 // console.log('A vos flèches !');
