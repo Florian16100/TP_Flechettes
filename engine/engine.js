@@ -1,15 +1,17 @@
 var inquirer = require('inquirer');
 var Players = require ('../models/Player');
-var Game = require('../models/Game');
 
-console.log('Allons y !!');
+
+console.log('A vos flèches !');
 
 var nbPlayers = null;
 var TabPlayers = [];
 var Mode = null;
 
-
-
+function randPlayers (TabPlayers){
+  const randomName = TabPlayers[Math.floor(Math.random() * TabPlayers.length)];
+  console.log(`C'est à ${randomName} de commencer`)
+}
 
 function checkPlayersInStart (nombre) {
   if(nombre > 1 && nombre < 5) {
@@ -65,7 +67,7 @@ inquirer.prompt(questionJoueurs).then(answers => {
       } else {
         console.log(`Vous avez choisi le ${Mode}`)
       }
-      Players.randPlayers(TabPlayers);
+      randPlayers(TabPlayers);
     })
   })
 });

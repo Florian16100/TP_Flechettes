@@ -1,6 +1,7 @@
-class Game extends gamemode {
-    constructor(mode,status) {
-        this.mode = ["around-the-world", "301", "cricket"];
-        this.status = ["draft", "started", "ended"];
-    }
-}
+const router = require('express').Router()
+
+router.get('/:id', (req, res, next) => {
+  res.send(req.url)
+})
+
+module.exports = router
