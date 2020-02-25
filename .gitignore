@@ -527,5 +527,5 @@ MigrationBackup/
 
 node_modules
 consignes.mkd
-pizza.js
 package-lock.json
+.vscode
