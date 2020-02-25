@@ -2,7 +2,7 @@
 const donnee = require('./db')
 const bodyParser = require('body-parser')
 const express = require('express')
-const Players = require('./models/Players.js')
+const Players = require('./models/Player.js')
 const Game = require('./models/Game.js')
 
 // Variable globales

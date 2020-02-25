@@ -1,6 +1,6 @@
 const gameRouter = require('./routers/game')
 const router = require('express').Router()
-const Players = require('./models/Players')
+const Players = require('./models/Player')
 // const Games = require('./models/Game')
 
 
@@ -34,7 +34,7 @@ router.get('/players', (req, res, next) => {
                 content += '</tr>'
               })
               content += '</table>'
-              res.render("playyers", {
+              res.render("players", {
                   content: content
               })
             },
@@ -60,17 +60,17 @@ router.post('/players/add', (req, res, next) => {
     })
 })
 
-router.post('/players/delete/{id}', (req, res, next) => {
-    Players.deletePlayers(req.body)
-    res.format({
-        html : () => {
-            res.redirect(301, '/players')
-        },
-        json : () => {
-            res.status(406).send('API_NOT_AVAILABLE')
-        }
-    })
-})
+// router.post('/players/delete/{id}', (req, res, next) => {
+//     Players.deletePlayers(req.body)
+//     res.format({
+//         html : () => {
+//             res.redirect(301, '/players')
+//         },
+//         json : () => {
+//             res.status(406).send('API_NOT_AVAILABLE')
+//         }
+//     })
+// })
 // Gestion des erreurs
 router.use((err, req, res, next) => {
     res.format({
