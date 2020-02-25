@@ -1,7 +1,13 @@
-const router = require('express').Router()
+// var Engine = require('../engine/engine')
 
-router.get('/:id', (req, res, next) => {
-  res.send(req.url)
-})
+// class Game {
+//   constructor(mode, status, date) {
+//     this.id = 1;
+//     this.name = "Game";
+//     this.mode = mode;
+//     this.status = status;
+//     this.date = date;
+//   }
+// }
 
-module.exports = router
+// module.exports = Game

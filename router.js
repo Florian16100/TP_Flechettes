@@ -18,14 +18,13 @@ router.all('/', (req, res, next) => {
         }
     })
 })
-
 router.get('/players', (req, res, next) => {
     Players.getPlayers()
     .then((Players) => { 
         res.format({
             html: () => {
-              let content = '<table class="table"><tr><th>ID</th><th>Name</th><th>Email</th><th>GameWin</th><th>GameLost</th><th>createdAt</th></tr>'
-              Object.Players.forEach((Players) => {
+              let content = '<table class="table"><tr><th>ID</th><th>Name</th><th>Email</th></tr>'
+              Object.values(Players).forEach((Players) => {
                 content += '<tr>'
                 content += '<td>' + Players['id'] + '</td>'
                 content += '<td>' + Players['name'] + '</td>'
@@ -49,7 +48,30 @@ router.get('/players', (req, res, next) => {
     })
 })
 
-// Gestion des errreurs
+router.post('/players/add', (req, res, next) => {
+    Players.insertPlayers(req.body)
+    res.format({
+        html : () => {
+            res.redirect(301, '/players')
+        },
+        json : () => {
+            res.status(406).send('API_NOT_AVAILABLE')
+        }
+    })
+})
+
+router.post('/players/delete/{id}', (req, res, next) => {
+    Players.deletePlayers(req.body)
+    res.format({
+        html : () => {
+            res.redirect(301, '/players')
+        },
+        json : () => {
+            res.status(406).send('API_NOT_AVAILABLE')
+        }
+    })
+})
+// Gestion des erreurs
 router.use((err, req, res, next) => {
     res.format({
         html: () => {

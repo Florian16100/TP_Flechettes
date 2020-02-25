@@ -2,13 +2,13 @@
 // const donnee = require('./db')
 const bodyParser = require('body-parser')
 const express = require('express')
-const Players = require('./models/Player.js')
+const Players = require('./models/Players.js')
 const Game = require('./models/Game.js')
 
 // Variable globales
 const app = express()
 const port = 3030
-// const router = require('./router')
+const router = require('./router')
 
 // Middelwares
 app.use(bodyParser.json())
@@ -18,7 +18,7 @@ app.set('engine','./engine')
 app.set('view engine', 'hbs')
 
 // USE ROUTER
-// app.use(router)
+app.use(router)
 
 // Lancement de l'application
 app.listen(port, () => console.log('le port est ' + port))
